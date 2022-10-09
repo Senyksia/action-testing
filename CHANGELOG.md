@@ -1,6 +1,14 @@
 # Changelog
 Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)!
 
+## [Unreleased]
+### Added
+ - Dummy unreleased patch
+ - Lorem ipsum
+
+### Fixed
+ - Lorem ipsum
+
 ## [0.1.3] - 2022-10-10
 ### Fixed
  - Try pushing tags again
