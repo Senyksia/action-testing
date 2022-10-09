@@ -1,0 +1,46 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version number (e.g. 1.0.0)"
+        required: true
+        type: string
+
+jobs:    
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup dotnet.exe
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: "6.0.x"
+
+    - name: Build the application
+      run: dotnet build -c Release /p:PublicRelease=true
+
+    - name: Extract release notes
+      id: extract_release_notes
+      uses: ffurrer2/extract-release-notes@v1
+      with:
+        prerelease: true
+
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        artifactErrorsFailBuild: true
+        #artifacts:
+        body: ${{ steps.extract_release_notes.outputs.release_notes }}
+        tag: v${{ inputs.version }}
+
+    - name: Update changelog
+      uses: thomaseizinger/keep-a-changelog-new-release@v1
+      with:
+        tag: ${{ inputs.version }}
