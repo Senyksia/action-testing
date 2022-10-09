@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>InfiniteFriends</RootNamespace>
+    <AssemblyName>InfiniteFriends</AssemblyName>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="MyScriptAssembly">
+      <HintPath>$(GameFolder)\SpiderHeckApp_Data\Managed\MyScriptAssembly.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>$(GameFolder)\SpiderHeckApp_Data\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Netcode.Runtime">
+      <HintPath>$(GameFolder)\SpiderHeckApp_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameFolder)\SpiderHeckApp_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameFolder)\SpiderHeckApp_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>$(GameFolder)\SpiderHeckApp_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony.dll">
+      <HintPath>..\Assemblies\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Core">
+      <HintPath>..\Assemblies\BepInEx.Core.dll</HintPath>
+    </Reference>
+        <Reference Include="BepInEx.Unity">
+      <HintPath>..\Assemblies\BepInEx.Unity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="Copy" AfterTargets="Build" Condition="'$(GameFolder)' != ''">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GameFolder)\BepInEx\plugins\" UseSymboliclinksIfPossible="true" />
+  </Target>
+
+</Project>
