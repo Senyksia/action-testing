@@ -38,7 +38,7 @@ jobs:
         version: ${{ inputs.version }}
 
     - name: Bump plugin version
-      run: sed -i "s/[0-9]+\.[0-9]+\.[0-9]+\./${{ inputs.version }}/" InfiniteFriends/PluginInfo.cs
+      run: sed -i -r "s/[0-9]+\.[0-9]+\.[0-9]+/${{ inputs.version }}/" InfiniteFriends/PluginInfo.cs
 
     - name: Initialize mandatory git config
       run: |
