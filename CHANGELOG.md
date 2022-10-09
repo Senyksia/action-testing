@@ -1,7 +1,7 @@
 # Changelog
 Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)!
 
-## [Unreleased]
+## [0.1.1] - 2022-10-09
 ### Fixed
  - Upgraded BepInEx to [BepInHecks](https://github.com/cobwebsh/BepInEx)
 
