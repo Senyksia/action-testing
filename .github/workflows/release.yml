@@ -33,9 +33,9 @@ jobs:
         draft: true
 
     - name: Update CHANGELOG.md
-      uses: thomaseizinger/keep-a-changelog-new-release@v1.1.0
+      uses: thomaseizinger/keep-a-changelog-new-release@v1
       with:
-        tag: ${{ inputs.version }}
+        version: ${{ inputs.version }}
 
     - name: Bump plugin version
       run: sed -i "s/[0-9]+\.[0-9]+\.[0-9]+\./${{ inputs.version }}" InfiniteFriends/PluginInfo.cs
